@@ -1,0 +1,39 @@
+# serverless.yml
+
+service: severless-strapi
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: dev
+  region: us-east-1
+  logRetentionInDays: 1
+  versionFunctions: false
+
+  memorySize: 2048
+  timeout: 30
+
+package:
+  excludeDevDependencies: true
+  exclude: 
+  - "**/**"
+  include: 
+  - "src/**"
+
+functions:
+  api:
+    handler: src/app.hello
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{any+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
