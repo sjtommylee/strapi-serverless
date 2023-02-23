@@ -7,7 +7,9 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "sls-offline": "serverless offline",
+    "sls-deploy": "serverless deploy"
   },
   "devDependencies": {},
   "dependencies": {
